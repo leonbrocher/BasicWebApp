@@ -3,6 +3,8 @@ package de.tum.in.ase.eist;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class QueryProcessor {
@@ -20,9 +22,18 @@ public class QueryProcessor {
         } else if (query.contains("name")) {
            return "MyTeam";
         } else if (query.contains("largest")){
-            String numberOnly = query.replaceAll("[^0-9]", "");
+            String numberOnly = query.replaceAll("[^0-9,]", "");
+            System.out.println(Arrays.toString(numberOnly.split(",")));
             int[] numbers  = Arrays.stream(numberOnly.split(",")).mapToInt(Integer::parseInt).toArray();
             return String.valueOf(getLargest(numbers));
+        }else if (query.contains("plus")){
+            String pattern = "([0-9]+) plus ([0-9]+)";
+            Pattern r = Pattern.compile(pattern);
+            Matcher m = r.matcher(query);
+            m.find();
+            int one = Integer.parseInt(m.group(1));
+            int two = Integer.parseInt(m.group(2));
+            return String.valueOf(one + two);
         }else{
             return "";
         }
