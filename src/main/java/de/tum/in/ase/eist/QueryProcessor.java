@@ -15,8 +15,10 @@ public class QueryProcessor {
     }
     public String process(String query) {
 		query = query.toLowerCase();
+        String excess = query.split(":")[0];
+        query = query.replace(excess,"");
         query = query.replaceAll("%20"," ");
-        query = query.split(":")[1];
+        System.out.println("parsed query: "+query);
         if (query.contains("shakespeare")) {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
                     "English poet, playwright, and actor, widely regarded as the greatest " +
