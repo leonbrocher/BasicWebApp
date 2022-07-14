@@ -23,6 +23,8 @@ public class QueryProcessor {
             String numberOnly = query.replaceAll("[^0-9]", "");
             int[] numbers  = Arrays.stream(numberOnly.split(",")).mapToInt(Integer::parseInt).toArray();
             return String.valueOf(getLargest(numbers));
+        }else{
+            return "";
         }
     }
 }
