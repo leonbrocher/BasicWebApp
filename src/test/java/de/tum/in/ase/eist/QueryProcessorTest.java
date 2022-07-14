@@ -31,9 +31,8 @@ class QueryProcessorTest {
 	}
 	@Test
 	void largest() {
-		String actual = queryProcessor.process("largest: 168, 10");
-		System.out.println(actual);
-		if (!actual.equals("168")) {
+		String actual = queryProcessor.process("%20which%20of%20the%20following%20numbers%20is%20the%20largest:%20601,%2025");
+		if (!actual.equals("601")) {
 			fail("The QueryProcessor does not know about Shakespeare.");
 		}
 	}
