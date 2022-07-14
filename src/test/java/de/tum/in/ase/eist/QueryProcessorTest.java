@@ -21,22 +21,7 @@ class QueryProcessorTest {
 			fail("The QueryProcessor does not know about Shakespeare.");
 		}
 	}
-	@Test
-	void plus() {
-		String actual = queryProcessor.process("what is 20 plus 15");
-		System.out.println(actual);
-		if (!actual.equals("35")) {
-			fail("The QueryProcessor does not know about Shakespeare.");
-		}
-	}
-	@Test
-	void largest() {
-		String actual = queryProcessor.process("largest: 168, 10");
-		System.out.println(actual);
-		if (!actual.equals("35")) {
-			fail("The QueryProcessor does not know about Shakespeare.");
-		}
-	}
+
 
 	@Test
 	void isNotCaseSensitive() {
